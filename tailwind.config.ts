@@ -13,7 +13,7 @@ export default {
       colors: {
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
-        accent: 'hsl(240 4.8% 95.9%)',
+        'accent-var': 'hsl(240 4.8% 95.9%)',
         'accent-foreground': 'hsl(240 5.9% 10%)',
         card: {
           DEFAULT: 'hsl(var(--card))',
@@ -36,7 +36,7 @@ export default {
           foreground: 'hsl(var(--muted-foreground))',
         },
         accent: {
-          DEFAULT: 'hsl(var(--accent))',
+          DEFAULT: 'hsl(var(--accent-var))',
           foreground: 'hsl(var(--accent-foreground))',
         },
         destructive: {

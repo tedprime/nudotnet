@@ -130,8 +130,9 @@ const Header = () => {
               <li>
                 <Link
                   href={'/contact'}
-                  className={`group inline-flex h-10 w-max items-center justify-center !rounded-full px-4 py-2 text-sm font-bold transition-colors disabled:pointer-events-none disabled:opacity-50 ${pathname === '/contact' ? 'bg-white' : ''}`}
-                >
+                  className={`group inline-flex h-10 w-max items-center justify-center !rounded-full px-4 py-2 text-sm font-bold transition-colors ${pathname === '/contact' ? 'bg-white text-gray-800' : 'bg-transparent text-white'}`}
+                  >
+                
                   Contact
                 </Link>
               </li>
