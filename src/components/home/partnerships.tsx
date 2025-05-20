@@ -13,7 +13,7 @@ function Partnerships() {
           alt="hp business partner"
           width={300}
           height={134}
-          className="ml-8 h-20 w-20 object-cover"
+          className="ml-8 h-20 w-20 object-contain"
         />
         <Image
           src={'/images/microsoft-logo.svg'}
