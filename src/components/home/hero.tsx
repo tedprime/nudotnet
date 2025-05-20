@@ -10,7 +10,7 @@ function Hero() {
   const settings = {
     dots: false,
     infinite: true,
-    speed: 800,
+    speed: 1500,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
@@ -20,7 +20,7 @@ function Hero() {
     dots: false,
     fade: true,
     infinite: true,
-    speed: 800,
+    speed: 1500,
     slidesToShow: 1,
     slidesToScroll: 1,
     waitForAnimate: false,
@@ -60,6 +60,16 @@ function Hero() {
           ref={(slider) => (sliderRef1 = slider)}
           className="h-full w-full"
         >
+          <div className="relative h-screen max-h-[1200px] w-full">
+            <Image
+              src={'/images/hardware.jpg'}
+              alt="hardware"
+              width={1000}
+              height={1000}
+              className="h-full w-full object-cover md:object-top"
+            />
+            <div className="absolute top-0 h-full w-full bg-black/40"></div>
+          </div>
           <div className="relative h-screen max-h-[1200px] w-full">
             <Image
               src={'/images/tacbay.jpg'}
@@ -104,9 +114,46 @@ function Hero() {
                 ref={(slider) => (sliderRef2 = slider)}
                 {...settings}
               >
-                {/* slide 1 - tacbay */}
+                {/* slide 1 - hardware */}
                 <div
                   key={1}
+                  className="min-w-0 shrink-0 grow-0 basis-full pl-0"
+                >
+                  <div className="mx-auto flex h-fit w-full flex-col items-center justify-center gap-4 rounded-3xl bg-[#1e90ff]/20 py-10 backdrop-blur-md lg:w-10/12">
+                    <h1 className="text-balance text-center text-2xl font-black text-white lg:text-5xl">
+                      Advancing Nigeria&apos;s Economy <br /> with Quality Hardware and
+                      Software
+                    </h1>
+                    <p className="w-[90%] text-center text-white lg:w-[60%]">
+                      Enhancing quality digital infrastructure and solutions for
+                      Nigeria&apos;s economic development.
+                    </p>
+                    <div className="flex items-center gap-2 border-b pb-1 text-sm text-white">
+                      <Link className="text-white" href="/edubox">
+                        View Businesses
+                      </Link>
+                      <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-5 w-5"
+                      >
+                        <path
+                          d="M5 12H19M19 12L12 5M19 12L12 19"
+                          stroke="currentColor"
+                          strokeWidth="1.66667"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        ></path>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                {/* slide 2 - tacbay */}
+                <div
+                  key={2}
                   className="min-w-0 shrink-0 grow-0 basis-full pl-0"
                 >
                   <div className="mx-auto flex h-fit w-full flex-col items-center justify-center gap-4 rounded-3xl bg-[#990000]/20 py-10 backdrop-blur-md lg:w-10/12">
@@ -141,9 +188,9 @@ function Hero() {
                     </div>
                   </div>
                 </div>
-                {/* slide 2 - edubox */}
+                {/* slide 3 - edubox */}
                 <div
-                  key={2}
+                  key={3}
                   className="min-w-0 shrink-0 grow-0 basis-full pl-0"
                 >
                   <div className="mx-auto flex h-fit w-full flex-col items-center justify-center gap-4 rounded-3xl bg-[#FF6600]/20 py-10 backdrop-blur-md lg:w-10/12">
@@ -179,9 +226,9 @@ function Hero() {
                     </div>
                   </div>
                 </div>
-                {/* slide 3 - 3mtt */}
+                {/* slide 4 - 3mtt */}
                 <div
-                  key={3}
+                  key={4}
                   className="min-w-0 shrink-0 grow-0 basis-full pl-0"
                 >
                   <div className="mx-auto flex h-fit w-full flex-col items-center justify-center gap-4 rounded-3xl bg-[#054F31]/30 py-10 backdrop-blur-md lg:w-10/12">

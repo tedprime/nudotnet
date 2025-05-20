@@ -11,10 +11,9 @@ const Projects = () => {
                 Our Projects
               </h3>
               <p className="mt-6 text-lg text-white">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet
-                corporis nihil accusantium mollitia nemo laudantium molestias?
-                Aliquid fugiat dolorem expedita soluta consequatur officia
-                mollitia eligendi at, ad quibusdam ipsum facere.
+                Our projects encompass national mentorship, hackathons, design,
+                deployment, and management of technovation spaces, as well as
+                hardware and software development.
               </p>
             </div>
           </div>
