@@ -1,2 +1,2 @@
 # nudotnet
-Tedprime dot net v2.3.0
+Tedprime dot net v2.4.0
