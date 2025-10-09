@@ -21,7 +21,7 @@ export const Tabs = () => {
             href={''}
             className={`px-6 py-3 text-center text-sm lg:text-left lg:text-base`}
           >
-            Iperu Remo
+            Digital Centers
           </Link>
         </div>
       </div>
