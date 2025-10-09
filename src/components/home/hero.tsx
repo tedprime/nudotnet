@@ -121,12 +121,12 @@ function Hero() {
                 >
                   <div className="mx-auto flex h-fit w-full flex-col items-center justify-center gap-4 rounded-3xl bg-[#1e90ff]/20 py-10 backdrop-blur-md lg:w-10/12">
                     <h1 className="text-balance text-center text-2xl font-black text-white lg:text-5xl">
-                      Advancing Nigeria&apos;s Economy <br /> with Quality Hardware and
+                      Advancing Nigeria&apos;s and Africa&apos;s Economic Digital Ecosystem <br /> with Quality Hardware and
                       Software
                     </h1>
                     <p className="w-[90%] text-center text-white lg:w-[60%]">
                       Enhancing quality digital infrastructure and solutions for
-                      Nigeria&apos;s economic development.
+                      Nigeria&apos;s and Africa&apos;s economic development.
                     </p>
                     <div className="flex items-center gap-2 border-b pb-1 text-sm text-white">
                       <Link className="text-white" href="/edubox">
@@ -238,8 +238,7 @@ function Hero() {
                     </h1>
                     <p className="w-[90%] text-center text-white lg:w-[60%]">
                       3MTT programme will generate a pipeline of technical
-                      talent in line with President Bola Ahmed Tinubu’s vision
-                      of creating 2 million digital jobs by 2025.
+                      talent in line with the Federal Government of Nigeria's Vision of creating 3 million digital jobs by 2025.
                     </p>
                     <div className="flex items-center gap-2 border-b pb-1 text-sm text-white">
                       <Link className="text-white" href="/">
