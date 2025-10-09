@@ -76,20 +76,20 @@ const Footer = () => {
             <p className="text-lg font-bold text-white">Our Socials</p>
             <ul className="mt-5 space-y-3 text-white">
               <li>
-                <Link href={'https://www.instagram.com/tedprimehub/'}>
+                <Link href={'https://www.instagram.com/tedprimehub/'} target="_blank" rel="noopener noreferrer">
                   Instagram
                 </Link>
               </li>
               <li>
-                <Link href="https://www.linkedin.com/company/tedprime-hub/">
+                <Link href="https://www.facebook.com/tedprimeSI/" target="_blank" rel="noopener noreferrer">
                   Facebook
                 </Link>
               </li>
               <li>
-                <Link href={'https://x.com/tedprimehub'}>Twitter</Link>
+                <Link href={'https://x.com/tedprimehub'} target="_blank" rel="noopener noreferrer">Twitter</Link>
               </li>
               <li>
-                <Link href={'https://www.linkedin.com/company/tedprime-hub/'}>
+                <Link href={'https://www.linkedin.com/company/tedprime-hub/'} target="_blank" rel="noopener noreferrer">
                   Linkedin
                 </Link>
               </li>
