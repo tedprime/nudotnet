@@ -455,7 +455,7 @@ function Hero() {
                       Enhancing quality digital infrastructure and solutions for Nigeria&apos;s and Africa&apos;s economic development.
                     </p>
                     <div className="flex items-center gap-2 border-b pb-1 text-sm text-white">
-                      <Link href="/edubox" className="text-white">
+                      <Link href="/about" className="text-white">
                         View Businesses
                       </Link>
                       <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -530,7 +530,7 @@ function Hero() {
                       3MTT programme will generate a pipeline of technical talent in line with the Federal Government of Nigeria&apos;s vision of creating 3 million digital jobs by 2025.
                     </p>
                     <div className="flex items-center gap-2 border-b pb-1 text-sm text-white">
-                      <Link href="/" className="text-white">
+                      <Link href="/projects" className="text-white">
                         View Businesses
                       </Link>
                       <svg width="24" height="24" viewBox="0 0 24 24" fill="none"

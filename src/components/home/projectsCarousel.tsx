@@ -11,6 +11,12 @@ import {
 const ProjectCarousel = () => {
   const slides = [
     {
+      image: '/images/_A1A4699.jpg',
+      title: 'Bilingual and competitive',
+      description:
+        'The Bilingual and Competitive (BAC) is a project of the French Embassy Fund to promote French language in Nigerian Universities across the Six geo-political zones.',
+    },
+    {
       image: '/images/tedprimeC.jpg',
       title: 'Microsoft Agro-Tech Hackathon',
       description:
@@ -34,6 +40,7 @@ const ProjectCarousel = () => {
       description:
         'Digital Language Learning Laboratory Project Construction',
     },
+    
   ];
 
   return (

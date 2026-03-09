@@ -23,6 +23,15 @@ function ImagesCarousel() {
       <CarouselContent className="-ml-4 my-4">
         <CarouselItem className="basis-1/2 md:basis-1/3 h-[300px] pl-4">
           <Image
+            src={"/images/_A1A4699.jpg"}
+            alt="BAC"
+            width={1000}
+            height={668}
+            className="w-full h-full object-cover"
+          />
+        </CarouselItem>
+        <CarouselItem className="basis-1/2 md:basis-1/3 h-[300px] pl-4">
+          <Image
             src={"/images/tedprimeA.jpg"}
             alt="tedprime"
             width={1000}

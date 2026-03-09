@@ -99,6 +99,13 @@ function Partnerships() {
           height={65}
           className="ml-8"
         />
+         <Image
+          src={'/images/FEF.jpg'}
+          alt="French Education Fund"
+          width={300}
+          height={134}
+          className="ml-8 h-20 w-20 object-contain"
+        />
       </Marquee>
     </div>
   );
