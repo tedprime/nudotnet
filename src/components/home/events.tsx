@@ -9,20 +9,27 @@ import { useRef } from 'react';
 const events = [
   {
     id: 1,
+    date: 'March 2026',
+    description:
+      "TedPrime and Others to Support French Embassy's Bilingual and Competitive Project in 22 Nigerian Tertiary Institutions. ",
+    link: '/BAC',
+  },
+  {
+    id: 2,
     date: 'Sep 2023',
     description:
       'We aim to bridge the gap between education, technology and Skills between the Global North and Nigeria by providing schools, teachers, students and policy administrators the necessary skills through sustainable partnerships.',
     link: 'https://www.startupguide.com/tedprime-hub',
   },
   {
-    id: 2,
+    id: 3,
     date: 'Mar 2025',
     description:
       'A Nigerian ed-tech organisation, TedPrime Hub, has unveiled a digital platform tailored to uplift Nigeria’s artisans and informal sector',
     link: 'https://punchng.com/firm-unveils-platforms-to-empower-artisans/',
   },
   {
-    id: 3,
+    id: 4,
     date: 'Feb 2025',
     description: 'KWSG targets 28,000 school girls for digital skills training',
     link: 'https://thereflection.com.ng/2025/02/17/kwsg-targets-28000-school-girls-for-digital-skills-training-stephen-olufemi-oni-ilorin/',
@@ -60,7 +67,29 @@ export const Events = () => {
         <div className="w-full overflow-hidden">
           <Slider ref={sliderRef} {...settings} className="h-full w-full">
             {/* slide */}
-            <div key={1} className="h-full w-full rounded-md border">
+             <div key={1} className="h-full w-full rounded-md border">
+              <Image
+                src={'/images/_A1A4699.jpg'}
+                alt=""
+                width={500}
+                height={500}
+                className="h-[250px] w-full rounded-t-md md:h-[450px]"
+              />
+              <p className="px-4 pt-6 text-black/80">Feb 2025</p>
+              <h4 className="mx-4 my-4 font-semibold">
+                TedPrime and Others to Support French Embassy's Bilingual and Competitive Project in 22 Nigerian Tertiary Institutions.
+              </h4>
+              <div className="mb-4">
+                <Link
+                  href={'/BAC'}
+                  target="_blank"
+                  className="px-4 text-[#ef6e11] underline"
+                >
+                  Full story here
+                </Link>
+              </div>
+            </div>
+            <div key={2} className="h-full w-full rounded-md border">
               <Image
                 src={'/images/agile.jpeg'}
                 alt=""
@@ -84,7 +113,7 @@ export const Events = () => {
               </div>
             </div>
             {/* slide */}
-            <div key={2} className="h-full w-full rounded-md border">
+            <div key={3} className="h-full w-full rounded-md border">
               <Image
                 src={'/images/tedprimeC.jpg'}
                 alt=""
@@ -110,7 +139,7 @@ export const Events = () => {
               </div>
             </div>
             {/* slide */}
-            <div key={3} className="h-full w-full rounded-md border">
+            <div key={4} className="h-full w-full rounded-md border">
               <Image
                 src={'/images/3mtt-winners.jpeg'}
                 alt=""

@@ -70,6 +70,9 @@ const Footer = () => {
               <li>
                 <Link href={'/projects'}>3MTT</Link>
               </li>
+              <li>
+                <Link href={'/News/BAC'}>BAC NEWS</Link>
+              </li>
             </ul>
           </div>
           <div>
