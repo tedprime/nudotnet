@@ -81,8 +81,7 @@ export const Events = () => {
               </h4>
               <div className="mb-4">
                 <Link
-                  href={'/BAC'}
-                  target="_blank"
+                  href={'/News/BAC'}
                   className="px-4 text-[#ef6e11] underline"
                 >
                   Full story here
