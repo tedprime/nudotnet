@@ -188,7 +188,7 @@ export const Events = () => {
           ))}
         </div>
 
-        {/* prev and next button */}
+        {/* prev and next button  */}
         <div className="container hidden flex-row items-center gap-4 text-white lg:flex">
           <button
             onClick={previous}
