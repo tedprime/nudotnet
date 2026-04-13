@@ -429,6 +429,17 @@ function Hero() {
             />
             <div className="absolute top-0 h-full w-full bg-black/40"></div>
           </div>
+          {/* Slide 5 */}
+          <div className="relative h-screen max-h-[1200px] w-full">
+            <Image
+              src="/images/certigo.jpeg"
+              alt="3mtt"
+              width={1000}
+              height={1000}
+              className="h-full w-full object-cover object-top"
+            />
+            <div className="absolute top-0 h-full w-full bg-black/40"></div>
+          </div>
         </Slider>
       </div>
 
@@ -440,106 +451,199 @@ function Hero() {
         <div className="relative">
           <div className="overflow-hidden">
             <div>
-              <Slider
-                asNavFor={nav1 as Slider}
-                ref={sliderRef2}
-                {...settings}
-              >
+              <Slider asNavFor={nav1 as Slider} ref={sliderRef2} {...settings}>
                 {/* Slide 1 */}
-                <div key={1} className="min-w-0 shrink-0 grow-0 basis-full pl-0">
+                <div
+                  key={1}
+                  className="min-w-0 shrink-0 grow-0 basis-full pl-0"
+                >
                   <div className="mx-auto flex h-fit w-full flex-col items-center justify-center gap-4 rounded-3xl bg-[#1e90ff]/20 py-10 backdrop-blur-md lg:w-10/12">
                     <h1 className="text-balance text-center text-2xl font-black text-white lg:text-5xl">
-                      Advancing Nigeria&apos;s and Africa&apos;s Economic Digital Ecosystem <br /> with Quality Hardware and Software
+                      Advancing Nigeria&apos;s and Africa&apos;s Economic
+                      Digital Ecosystem <br /> with Quality Hardware and
+                      Software
                     </h1>
                     <p className="w-[90%] text-center text-white lg:w-[60%]">
-                      Enhancing quality digital infrastructure and solutions for Nigeria&apos;s and Africa&apos;s economic development.
+                      Enhancing quality digital infrastructure and solutions for
+                      Nigeria&apos;s and Africa&apos;s economic development.
                     </p>
                     <div className="flex items-center gap-2 border-b pb-1 text-sm text-white">
                       <Link href="/about" className="text-white">
                         View Businesses
                       </Link>
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                        xmlns="http://www.w3.org/2000/svg" className="h-5 w-5">
-                        <path d="M5 12H19M19 12L12 5M19 12L12 19"
+                      <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-5 w-5"
+                      >
+                        <path
+                          d="M5 12H19M19 12L12 5M19 12L12 19"
                           stroke="currentColor"
                           strokeWidth="1.66667"
                           strokeLinecap="round"
-                          strokeLinejoin="round"></path>
+                          strokeLinejoin="round"
+                        ></path>
                       </svg>
                     </div>
                   </div>
                 </div>
 
                 {/* Slide 2 */}
-                <div key={2} className="min-w-0 shrink-0 grow-0 basis-full pl-0">
+                <div
+                  key={2}
+                  className="min-w-0 shrink-0 grow-0 basis-full pl-0"
+                >
                   <div className="mx-auto flex h-fit w-full flex-col items-center justify-center gap-4 rounded-3xl bg-[#990000]/20 py-10 backdrop-blur-md lg:w-10/12">
                     <h1 className="text-balance text-center text-2xl font-black text-white lg:text-5xl">
                       Discover Skilled Artisans <br /> Near You
                     </h1>
                     <p className="w-[90%] text-center text-white lg:w-[60%]">
-                      Explore a world of craftsmanship at your fingertips. Find reliable artisans in your neighborhood, ready to bring expertise to your doorstep.
+                      Explore a world of craftsmanship at your fingertips. Find
+                      reliable artisans in your neighborhood, ready to bring
+                      expertise to your doorstep.
                     </p>
                     <div className="flex items-center gap-2 border-b pb-1 text-sm text-white">
                       <Link href="https://tacbay.app/" className="text-white">
                         View Businesses
                       </Link>
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                        xmlns="http://www.w3.org/2000/svg" className="h-5 w-5">
-                        <path d="M5 12H19M19 12L12 5M19 12L12 19"
+                      <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-5 w-5"
+                      >
+                        <path
+                          d="M5 12H19M19 12L12 5M19 12L12 19"
                           stroke="currentColor"
                           strokeWidth="1.66667"
                           strokeLinecap="round"
-                          strokeLinejoin="round"></path>
+                          strokeLinejoin="round"
+                        ></path>
                       </svg>
                     </div>
                   </div>
                 </div>
 
                 {/* Slide 3 */}
-                <div key={3} className="min-w-0 shrink-0 grow-0 basis-full pl-0">
+                <div
+                  key={3}
+                  className="min-w-0 shrink-0 grow-0 basis-full pl-0"
+                >
                   <div className="mx-auto flex h-fit w-full flex-col items-center justify-center gap-4 rounded-3xl bg-[#FF6600]/20 py-10 backdrop-blur-md lg:w-10/12">
                     <h1 className="text-balance text-center text-2xl font-black text-white lg:text-5xl">
                       Crash the Complexity <br /> of Edubox
                     </h1>
                     <p className="w-[90%] text-center text-white lg:w-[60%]">
-                      We are working to propel Nigeria into becoming one of the active key players of the United Nations Sustainable Development Goals in Education.
+                      We are working to propel Nigeria into becoming one of the
+                      active key players of the United Nations Sustainable
+                      Development Goals in Education.
                     </p>
                     <div className="flex items-center gap-2 border-b pb-1 text-sm text-white">
                       <Link href="/edubox" className="text-white">
                         View Businesses
                       </Link>
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                        xmlns="http://www.w3.org/2000/svg" className="h-5 w-5">
-                        <path d="M5 12H19M19 12L12 5M19 12L12 19"
+                      <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-5 w-5"
+                      >
+                        <path
+                          d="M5 12H19M19 12L12 5M19 12L12 19"
                           stroke="currentColor"
                           strokeWidth="1.66667"
                           strokeLinecap="round"
-                          strokeLinejoin="round"></path>
+                          strokeLinejoin="round"
+                        ></path>
                       </svg>
                     </div>
                   </div>
                 </div>
 
                 {/* Slide 4 */}
-                <div key={4} className="min-w-0 shrink-0 grow-0 basis-full pl-0">
+                <div
+                  key={4}
+                  className="min-w-0 shrink-0 grow-0 basis-full pl-0"
+                >
                   <div className="mx-auto flex h-fit w-full flex-col items-center justify-center gap-4 rounded-3xl bg-[#054F31]/30 py-10 backdrop-blur-md lg:w-10/12">
                     <h1 className="text-balance text-center text-2xl font-black text-white lg:text-5xl">
-                      Shaping the Future of <br /> Nigeria&apos;s Digital Workforce
+                      Shaping the Future of <br /> Nigeria&apos;s Digital
+                      Workforce
                     </h1>
                     <p className="w-[90%] text-center text-white lg:w-[60%]">
-                      3MTT programme will generate a pipeline of technical talent in line with the Federal Government of Nigeria&apos;s vision of creating 3 million digital jobs by 2025.
+                      3MTT programme will generate a pipeline of technical
+                      talent in line with the Federal Government of
+                      Nigeria&apos;s vision of creating 3 million digital jobs
+                      by 2025.
                     </p>
                     <div className="flex items-center gap-2 border-b pb-1 text-sm text-white">
                       <Link href="/projects" className="text-white">
                         View Businesses
                       </Link>
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                        xmlns="http://www.w3.org/2000/svg" className="h-5 w-5">
-                        <path d="M5 12H19M19 12L12 5M19 12L12 19"
+                      <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-5 w-5"
+                      >
+                        <path
+                          d="M5 12H19M19 12L12 5M19 12L12 19"
                           stroke="currentColor"
                           strokeWidth="1.66667"
                           strokeLinecap="round"
-                          strokeLinejoin="round"></path>
+                          strokeLinejoin="round"
+                        ></path>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                {/* Slide 5 */}
+                <div
+                  key={5}
+                  className="min-w-0 shrink-0 grow-0 basis-full pl-0"
+                >
+                  <div className="mx-auto flex h-fit w-full flex-col items-center justify-center gap-4 rounded-3xl bg-[#C084FC]/30 py-10 backdrop-blur-md lg:w-10/12">
+                    <h1 className="text-balance text-center text-2xl font-black text-white lg:text-5xl">
+                      Certification Assessment Platform <br />
+                      for Government Agencies,
+                      <br /> Enterprises and Certifications
+                    </h1>
+                    <p className="w-[90%] text-center text-white lg:w-[60%]">
+                      Trusted Exams, Intelligent Proctoring. The modern
+                      certification platform for organizations worldwide.
+                    </p>
+                    <div className="flex items-center gap-2 border-b pb-1 text-sm text-white">
+                      <Link
+                        href="https://usecertigo.com/"
+                        target="_blank"
+                        className="text-white"
+                      >
+                        View Businesses
+                      </Link>
+                      <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-5 w-5"
+                      >
+                        <path
+                          d="M5 12H19M19 12L12 5M19 12L12 19"
+                          stroke="currentColor"
+                          strokeWidth="1.66667"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        ></path>
                       </svg>
                     </div>
                   </div>
@@ -554,10 +658,18 @@ function Hero() {
               onClick={previous}
               className="relative inline-flex aspect-square h-10 w-10 items-center justify-center rounded-full border border-white bg-transparent text-sm font-medium transition hover:bg-[#ef6e11]"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
-                className="lucide lucide-arrow-left h-4 w-4">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="lucide lucide-arrow-left h-4 w-4"
+              >
                 <path d="m12 19-7-7 7-7"></path>
                 <path d="M19 12H5"></path>
               </svg>
@@ -568,10 +680,18 @@ function Hero() {
               onClick={next}
               className="relative inline-flex aspect-square h-10 w-10 items-center justify-center rounded-full border border-white bg-transparent text-sm font-medium transition hover:bg-[#ef6e11]"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
-                className="lucide lucide-arrow-right h-4 w-4">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="lucide lucide-arrow-right h-4 w-4"
+              >
                 <path d="M5 12h14"></path>
                 <path d="m12 5 7 7-7 7"></path>
               </svg>
