@@ -1,19 +1,24 @@
-'use client'
+'use client';
 
-import Link from "next/link";
-import { useState } from "react";
-import { CompetencyTest } from "./agile/competency-test";
-import { FlagOffCarousel } from "./agile/flagoff-carousel";
-import { TrainingSessions } from "./agile/training-sessions";
-import { ThreeMTT } from "./threeMTT";
-import { DigitalCenters } from "./digitalCenters";
+import { useState } from 'react';
+import { CaseStudyGrid } from '@/components/work/case-study-grid';
+import { CompetencyTest } from './agile/competency-test';
+import { FlagOffCarousel } from './agile/flagoff-carousel';
+import { TrainingSessions } from './agile/training-sessions';
+import { ThreeMTT } from './threeMTT';
+import { DigitalCenters } from './digitalCenters';
+
+const TABS = ['Case Studies', 'AGILE', '3MTT', 'Digital Centers'] as const;
+type Tab = (typeof TABS)[number];
 
 export const Tabs = () => {
-  const [activeTab, setActiveTab] = useState("AGILE");
+  const [activeTab, setActiveTab] = useState<Tab>('Case Studies');
 
   const renderContent = () => {
     switch (activeTab) {
-      case "AGILE":
+      case 'Case Studies':
+        return <CaseStudyGrid />;
+      case 'AGILE':
         return (
           <>
             <CompetencyTest />
@@ -21,9 +26,9 @@ export const Tabs = () => {
             <TrainingSessions />
           </>
         );
-      case "3MTT":
+      case '3MTT':
         return <ThreeMTT />;
-      case "Digital Centers":
+      case 'Digital Centers':
         return <DigitalCenters />;
       default:
         return null;
@@ -33,64 +38,24 @@ export const Tabs = () => {
   return (
     <>
       <div className="sticky top-24 z-50 h-20 w-full bg-[rgba(250,250,250)]">
-        <div className="container flex h-full items-center justify-center gap-8 border">
-          <Link
-            href={"#"}
-            onClick={() => setActiveTab("AGILE")}
-            className={`rounded-full border border-[#ef6e11] bg-transparent px-6 py-3 text-center text-sm lg:text-left lg:text-base ${activeTab === "AGILE" ? "text-[#ef6e11]" : "text-gray-500"}`}
-          >
-            AGILE
-          </Link>
-          <Link
-            href={"#"}
-            onClick={() => setActiveTab("3MTT")}
-            className={`px-6 py-3 text-center text-sm lg:text-left lg:text-base ${activeTab === "3MTT" ? "text-[#ef6e11] border border-[#ef6e11] rounded-full" : "text-gray-500"}`}
-          >
-            3MTT
-          </Link>
-          <Link
-            href={"#"}
-            onClick={() => setActiveTab("Digital Centers")}
-            className={`px-6 py-3 text-center text-sm lg:text-left lg:text-base ${activeTab === "Digital Centers" ? "text-[#ef6e11] border border-[#ef6e11] rounded-full" : "text-gray-500"}`}
-          >
-            Digital Centers
-          </Link>
+        <div className="container flex h-full items-center justify-center gap-4 lg:gap-8">
+          {TABS.map((tab) => (
+            <button
+              key={tab}
+              type="button"
+              onClick={() => setActiveTab(tab)}
+              className={`rounded-full border px-4 py-3 text-center text-sm transition-colors lg:px-6 lg:text-base ${
+                activeTab === tab
+                  ? 'border-[#ef6e11] text-[#ef6e11]'
+                  : 'border-transparent text-gray-500'
+              }`}
+            >
+              {tab}
+            </button>
+          ))}
         </div>
       </div>
-      <div className="tab-content">
-        {renderContent()}
-      </div>
+      <div className="tab-content">{renderContent()}</div>
     </>
   );
 };
-
-// import Link from "next/link";
-
-// export const Tabs = () => {
-//   return (
-//     <>
-//       <div className="sticky top-24 z-50 h-20 w-full bg-[rgba(250,250,250)]">
-//         <div className="container flex h-full items-center justify-center gap-8 border">
-//           <Link
-//             href={''}
-//             className={`rounded-full border border-[#ef6e11] bg-transparent px-6 py-3 text-center text-sm text-[#ef6e11] lg:text-left lg:text-base`}
-//           >
-//             AGILE
-//           </Link>
-//           <Link
-//             href={''}
-//             className={`px-6 py-3 text-center text-sm lg:text-left lg:text-base`}
-//           >
-//             3MTT
-//           </Link>
-//           <Link
-//             href={''}
-//             className={`px-6 py-3 text-center text-sm lg:text-left lg:text-base`}
-//           >
-//             Digital Centers
-//           </Link>
-//         </div>
-//       </div>
-//     </>
-//   );
-// };

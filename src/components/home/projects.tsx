@@ -7,13 +7,16 @@ const Projects = () => {
         <div className="container relative flex h-full flex-col gap-28 lg:flex-row">
           <div className="relative flex h-full flex-1 flex-col lg:flex-[2]">
             <div className="mt-28 md:mt-36">
-              <h3 className="text-3xl font-semibold text-white">
-                Our Projects
+              <p className="font-medium text-[#ef6e11]">
+                Training & Capacity Development
+              </p>
+              <h3 className="mt-2 text-3xl font-semibold text-white">
+                Building the skills our systems run on
               </h3>
               <p className="mt-6 text-lg text-white">
-                Our projects encompass national mentorship, hackathons, design,
-                deployment, and management of technovation spaces, as well as
-                hardware and software development.
+                Alongside our core technology work, we run national mentorship
+                programs, hackathons, and technovation spaces that build
+                digital capacity for the institutions we serve.
               </p>
             </div>
           </div>
