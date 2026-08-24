@@ -53,25 +53,23 @@ export const Content = () => {
       <div className="container pb-6">
         <div className="mx-auto w-full md:w-[80%]">
           <h3 className="text-balance text-center text-2xl md:text-3xl font-semibold text-black">
-            TedPrime is a hybrid entity
+            A technology company, first
           </h3>
           <p className="mt-4 text-lg text-center">
-            TedPrime is a hybrid entity and organization that positions herself
-            for disruptive technologies, education and skills development for
-            digital transformation across critical sectors through sustainable
-            partnerships. TedPrime is a hybrid entity and organization that
-            positions herself for disruptive technologies, education and skills
-            development for digital transformation across critical sectors
-            through sustainable partnerships.
+            TedPrime designs, builds, and operates software systems for
+            organizations that cannot afford to get it wrong — national
+            certification platforms, SaaS products, and IT infrastructure for
+            government agencies, institutions, and enterprises across Africa.
+            Our work spans the full lifecycle: architecture, engineering,
+            deployment, and long-term operation.
           </p>
           <p className="mt-4 text-lg text-center">
-            TedPrime is a hybrid entity and organization that positions herself
-            for disruptive technologies, education and skills development for
-            digital transformation across critical sectors through sustainable
-            partnerships. TedPrime is a hybrid entity and organization that
-            positions herself for disruptive technologies, education and skills
-            development for digital transformation across critical sectors
-            through sustainable partnerships.
+            Alongside that core technology practice, we run training and
+            capacity-development programs that build the digital skills our
+            systems depend on — a supporting practice, not the main one. It is
+            this combination of engineering depth and on-the-ground delivery
+            experience that lets us build systems institutions actually run
+            on.
           </p>
         </div>
       </div>

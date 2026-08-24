@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { FaInstagram, FaFacebookF, FaXTwitter, FaLinkedinIn } from 'react-icons/fa6';
 
 const Footer = () => {
   return (
@@ -34,21 +35,79 @@ const Footer = () => {
                 info@tedprimehub.org
               </Link>
             </div>
+            <div className="mt-6 flex items-center gap-4">
+              <Link
+                href={'https://www.instagram.com/tedprimehub/'}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className="text-white/70 transition-colors hover:text-white"
+              >
+                <FaInstagram size={18} />
+              </Link>
+              <Link
+                href="https://www.facebook.com/tedprimeSI/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                className="text-white/70 transition-colors hover:text-white"
+              >
+                <FaFacebookF size={18} />
+              </Link>
+              <Link
+                href={'https://x.com/tedprimehub'}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Twitter"
+                className="text-white/70 transition-colors hover:text-white"
+              >
+                <FaXTwitter size={18} />
+              </Link>
+              <Link
+                href={'https://www.linkedin.com/company/tedprime-hub/'}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                className="text-white/70 transition-colors hover:text-white"
+              >
+                <FaLinkedinIn size={18} />
+              </Link>
+            </div>
           </div>
           <div>
-            <p className="text-lg font-bold text-white">Our Projects</p>
+            <p className="text-lg font-bold text-white">Solutions</p>
             <ul className="mt-5 space-y-3 text-white">
               <li>
-                <Link href="/projects">KEKE</Link>
+                <Link href="/solutions">Custom Software Development</Link>
               </li>
               <li>
-                <Link href={'/projects'}>Kwara AGILE</Link>
+                <Link href="/solutions">SaaS Platform Engineering</Link>
               </li>
               <li>
-                <Link href={'/projects'}>Microsoft Agro-tech Hackathon</Link>
+                <Link href="/solutions">Examination & Certification Systems</Link>
               </li>
               <li>
-                <Link href={'/projects'}>Digital Language Laboratory</Link>
+                <Link href="/solutions">Government & Enterprise IT</Link>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <p className="text-lg font-bold text-white">Projects</p>
+            <ul className="mt-5 space-y-3 text-white">
+              <li>
+                <Link href="/projects">TRCN Test Taker Platform</Link>
+              </li>
+              <li>
+                <Link href="/projects">Certigo</Link>
+              </li>
+              <li>
+                <Link href="/projects">Slan</Link>
+              </li>
+              <li>
+                <Link href="/projects">Tacbay</Link>
+              </li>
+              <li>
+                <Link href="/projects">Bidooze</Link>
               </li>
             </ul>
           </div>
@@ -62,39 +121,10 @@ const Footer = () => {
                 <Link href={'/about'}>About Us</Link>
               </li>
               <li>
+                <Link href={'/projects'}>Projects</Link>
+              </li>
+              <li>
                 <Link href={'/contact'}>Contact</Link>
-              </li>
-              <li>
-                <Link href={'/edubox'}>Edubox</Link>
-              </li>
-              <li>
-                <Link href={'/projects'}>3MTT</Link>
-              </li>
-              <li>
-                <Link href={'/News/BAC'}>BAC NEWS</Link>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <p className="text-lg font-bold text-white">Our Socials</p>
-            <ul className="mt-5 space-y-3 text-white">
-              <li>
-                <Link href={'https://www.instagram.com/tedprimehub/'} target="_blank" rel="noopener noreferrer">
-                  Instagram
-                </Link>
-              </li>
-              <li>
-                <Link href="https://www.facebook.com/tedprimeSI/" target="_blank" rel="noopener noreferrer">
-                  Facebook
-                </Link>
-              </li>
-              <li>
-                <Link href={'https://x.com/tedprimehub'} target="_blank" rel="noopener noreferrer">Twitter</Link>
-              </li>
-              <li>
-                <Link href={'https://www.linkedin.com/company/tedprime-hub/'} target="_blank" rel="noopener noreferrer">
-                  Linkedin
-                </Link>
               </li>
             </ul>
           </div>

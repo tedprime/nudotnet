@@ -8,6 +8,9 @@ export const CoreValues = () => {
           <h3 className="font-bold text-[#ef6e11]">Our Core Values</h3>
           <ol>
             <li className="mt-3 list-inside list-disc text-black/70">
+              Software Engineering & Technology Innovation
+            </li>
+            <li className="mt-3 list-inside list-disc text-black/70">
               Technology, Education & Industrial Development
             </li>
             <li className="mt-3 list-inside list-disc text-black/70">
