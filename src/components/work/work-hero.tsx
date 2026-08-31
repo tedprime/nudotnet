@@ -7,7 +7,7 @@ export const WorkHero = () => {
         <div className="h-full w-full">
           <div className="relative h-full w-full">
             <Image
-              src={'/images/certigo.jpeg'}
+              src={'/images/tedprimeB.jpg'}
               alt="tedprime work"
               width={1000}
               height={1000}

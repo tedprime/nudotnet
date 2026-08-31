@@ -110,7 +110,7 @@ export const caseStudies: CaseStudy[] = [
     stack: ['React', 'Vite', 'Node.js', 'PostgreSQL', 'Learning Management'],
     outcome:
       'A national certification pathway for school leadership across all 37 states.',
-    href: null,
+    href: 'https://slan.tedprime.net',
     image: '/images/Slan-web.jpeg',
   },
   {
