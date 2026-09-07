@@ -40,6 +40,7 @@ const EMPLOYMENT_LABEL = {
   FULL_TIME: 'Full-Time',
   PART_TIME: 'Part-Time',
   CONTRACT: 'Contract',
+  INTERN: 'Intern',
 } as const;
 
 export default async function StaffProfilePage({
@@ -52,9 +53,17 @@ export default async function StaffProfilePage({
   if (!staff) notFound();
 
   const status = STATUS_CONFIG[staff.status];
-  const tenureYears = new Date().getFullYear() - staff.startDate.getFullYear();
+  const tenureYears = staff.startDate
+    ? new Date().getFullYear() - staff.startDate.getFullYear()
+    : null;
   const tenureLabel =
-    tenureYears <= 0 ? 'Less than a year' : `${tenureYears} year${tenureYears === 1 ? '' : 's'}`;
+    staff.startDate === null
+      ? 'Start date not specified'
+      : tenureYears !== null && tenureYears <= 0
+        ? 'Less than a year'
+        : tenureYears !== null
+          ? `${tenureYears} year${tenureYears === 1 ? '' : 's'}`
+          : 'Start date not specified';
   const initials = staff.fullName
     .split(' ')
     .map((word) => word[0])
@@ -106,7 +115,7 @@ export default async function StaffProfilePage({
             <InfoRow
               icon={Clock}
               label="Tenure"
-              value={`Since ${staff.startDate.getFullYear()} · ${tenureLabel}`}
+              value={staff.startDate ? `Since ${staff.startDate.getFullYear()} · ${tenureLabel}` : tenureLabel}
             />
             <InfoRow
               icon={Building2}

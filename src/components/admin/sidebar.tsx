@@ -69,7 +69,7 @@ export const AdminSidebar = ({
 
   return (
     <aside
-      className={`flex ${mobile ? 'h-full' : 'h-screen'} w-64 shrink-0 flex-col border-r border-black/10 bg-white`}
+      className={`flex ${mobile ? 'h-full' : 'h-screen'} w-64 shrink-0 flex-col border-r border-black/10 bg-white ${mobile ? '' : 'sticky top-0'}`}
     >
       <div className="flex h-20 shrink-0 items-center border-b border-black/10 px-6">
         <span className="text-lg font-bold text-black">

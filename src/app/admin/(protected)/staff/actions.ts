@@ -11,6 +11,10 @@ import { staffFormSchema } from './schema';
 
 export type StaffActionResult = { error?: string };
 
+function normalizeText(value: FormDataEntryValue | null) {
+  return typeof value === 'string' ? value.trim() : '';
+}
+
 async function requireSession() {
   const session = await getSession();
   if (!session) {
@@ -21,20 +25,53 @@ async function requireSession() {
 
 function parseStaffFormData(formData: FormData) {
   return staffFormSchema.parse({
-    fullName: formData.get('fullName'),
-    slug: formData.get('slug'),
-    staffId: formData.get('staffId'),
-    title: formData.get('title'),
-    department: formData.get('department'),
-    location: formData.get('location'),
-    employmentType: formData.get('employmentType'),
-    status: formData.get('status'),
-    startDate: formData.get('startDate'),
-    bio: formData.get('bio') ?? '',
-    email: formData.get('email') ?? '',
-    phone: formData.get('phone') ?? '',
+    fullName: normalizeText(formData.get('fullName')),
+    slug: normalizeText(formData.get('slug')),
+    staffId: normalizeText(formData.get('staffId')),
+    title: normalizeText(formData.get('title')),
+    department: normalizeText(formData.get('department')),
+    location: normalizeText(formData.get('location')),
+    employmentType: normalizeText(formData.get('employmentType')),
+    status: normalizeText(formData.get('status')),
+    startDate: normalizeText(formData.get('startDate')),
+    bio: normalizeText(formData.get('bio')),
+    email: normalizeText(formData.get('email')),
+    phone: normalizeText(formData.get('phone')),
     featured: formData.get('featured') === 'on',
   });
+}
+
+async function findDuplicateStaffConflict(
+  { slug, staffId }: { slug: string; staffId: string },
+  excludeId?: string
+) {
+  const where: Record<string, unknown> = {
+    OR: [
+      { slug: { equals: slug, mode: 'insensitive' } },
+      { staffId: { equals: staffId, mode: 'insensitive' } },
+    ],
+  };
+
+  if (excludeId) {
+    where.id = { not: excludeId };
+  }
+
+  const existing = await prisma.staffMember.findFirst({
+    where,
+    select: { id: true, slug: true, staffId: true },
+  });
+
+  if (!existing) return null;
+
+  const conflicts: string[] = [];
+  if (existing.slug && existing.slug.toLowerCase() === slug.toLowerCase()) {
+    conflicts.push('slug');
+  }
+  if (existing.staffId && existing.staffId.toLowerCase() === staffId.toLowerCase()) {
+    conflicts.push('staff ID');
+  }
+
+  return conflicts.length > 0 ? conflicts : null;
 }
 
 async function uploadPhotoIfPresent(formData: FormData) {
@@ -57,6 +94,22 @@ export async function createStaff(formData: FormData): Promise<StaffActionResult
 
   const photoUrl = await uploadPhotoIfPresent(formData);
 
+  const duplicateField = await findDuplicateStaffConflict({
+    slug: data.slug,
+    staffId: data.staffId,
+  });
+
+  if (duplicateField) {
+    return {
+      error:
+        duplicateField.length === 2
+          ? 'This slug and staff ID are already in use.'
+          : duplicateField[0] === 'slug'
+            ? 'This slug is already in use.'
+            : 'This staff ID is already in use.',
+    };
+  }
+
   try {
     await prisma.staffMember.create({
       data: {
@@ -68,7 +121,7 @@ export async function createStaff(formData: FormData): Promise<StaffActionResult
         location: data.location,
         employmentType: data.employmentType,
         status: data.status,
-        startDate: new Date(data.startDate),
+        startDate: data.startDate ? new Date(data.startDate) : null,
         bio: data.bio || null,
         email: data.email || null,
         phone: data.phone || null,
@@ -76,8 +129,21 @@ export async function createStaff(formData: FormData): Promise<StaffActionResult
         featured: Boolean(data.featured),
       },
     });
-  } catch {
-    return { error: 'Could not save — the slug or staff ID may already be in use.' };
+  } catch (error) {
+    const prismaError = error as { code?: string; message?: string };
+    console.error('Create staff failed:', error);
+
+    if (prismaError?.code === 'P2002') {
+      return {
+        error: 'A staff member with this slug or staff ID already exists.',
+      };
+    }
+
+    return {
+      error: prismaError?.message
+        ? `Could not save the staff member: ${prismaError.message}`
+        : 'Could not save the staff member. Please check the form and try again.',
+    };
   }
 
   await logActivity({
@@ -109,6 +175,25 @@ export async function updateStaff(
 
   const photoUrl = await uploadPhotoIfPresent(formData);
 
+  const duplicateField = await findDuplicateStaffConflict(
+    {
+      slug: data.slug,
+      staffId: data.staffId,
+    },
+    id
+  );
+
+  if (duplicateField) {
+    return {
+      error:
+        duplicateField.length === 2
+          ? 'This slug and staff ID are already in use.'
+          : duplicateField[0] === 'slug'
+            ? 'This slug is already in use.'
+            : 'This staff ID is already in use.',
+    };
+  }
+
   try {
     await prisma.staffMember.update({
       where: { id },
@@ -121,7 +206,7 @@ export async function updateStaff(
         location: data.location,
         employmentType: data.employmentType,
         status: data.status,
-        startDate: new Date(data.startDate),
+        startDate: data.startDate ? new Date(data.startDate) : null,
         bio: data.bio || null,
         email: data.email || null,
         phone: data.phone || null,
@@ -129,8 +214,21 @@ export async function updateStaff(
         featured: Boolean(data.featured),
       },
     });
-  } catch {
-    return { error: 'Could not save — the slug or staff ID may already be in use.' };
+  } catch (error) {
+    const prismaError = error as { code?: string; message?: string };
+    console.error('Update staff failed:', error);
+
+    if (prismaError?.code === 'P2002') {
+      return {
+        error: 'A staff member with this slug or staff ID already exists.',
+      };
+    }
+
+    return {
+      error: prismaError?.message
+        ? `Could not save the staff member: ${prismaError.message}`
+        : 'Could not save the staff member. Please check the form and try again.',
+    };
   }
 
   await logActivity({
