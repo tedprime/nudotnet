@@ -28,6 +28,7 @@ enum EmploymentType {
   FULL_TIME
   PART_TIME
   CONTRACT
+  INTERN
 }
 
 model AdminUser {
@@ -50,7 +51,7 @@ model StaffMember {
   location       String
   employmentType EmploymentType @default(FULL_TIME)
   status         StaffStatus    @default(ACTIVE)
-  startDate      DateTime
+  startDate      DateTime?
   bio            String?        @db.Text
   photoUrl       String?
   email          String?

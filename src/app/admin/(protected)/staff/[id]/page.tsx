@@ -26,7 +26,7 @@ export default async function EditStaffPage({
           location: staff.location,
           employmentType: staff.employmentType,
           status: staff.status,
-          startDate: staff.startDate.toISOString().slice(0, 10),
+          startDate: staff.startDate ? staff.startDate.toISOString().slice(0, 10) : '',
           bio: staff.bio ?? '',
           email: staff.email ?? '',
           phone: staff.phone ?? '',

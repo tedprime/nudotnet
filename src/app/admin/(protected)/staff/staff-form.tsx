@@ -70,7 +70,7 @@ export function StaffForm({ staffId, photoUrl, defaultValues }: Props) {
     formData.set('location', values.location);
     formData.set('employmentType', values.employmentType);
     formData.set('status', values.status);
-    formData.set('startDate', values.startDate);
+    formData.set('startDate', values.startDate ?? '');
     formData.set('bio', values.bio ?? '');
     formData.set('email', values.email ?? '');
     formData.set('phone', values.phone ?? '');
@@ -165,6 +165,7 @@ export function StaffForm({ staffId, photoUrl, defaultValues }: Props) {
                   <SelectItem value="FULL_TIME">Full-Time</SelectItem>
                   <SelectItem value="PART_TIME">Part-Time</SelectItem>
                   <SelectItem value="CONTRACT">Contract</SelectItem>
+                  <SelectItem value="INTERN">Intern</SelectItem>
                 </SelectContent>
               </Select>
             )}

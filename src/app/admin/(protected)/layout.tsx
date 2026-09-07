@@ -20,15 +20,15 @@ export default async function AdminProtectedLayout({
     getLatestActivity(),
   ]);
   return (
-    <div className="flex min-h-screen bg-gray-50 print:block print:h-auto print:overflow-visible print:bg-white">
-      <div className="print:hidden hidden lg:flex">
+    <div className="flex h-screen overflow-hidden bg-gray-50 print:block print:h-auto print:overflow-visible print:bg-white">
+      <div className="print:hidden hidden lg:block lg:shrink-0 lg:overflow-hidden">
         <AdminSidebar session={session} />
       </div>
-      <div className="flex min-h-0 min-w-0 flex-1 flex-col print:overflow-visible">
-        <div className="print:hidden">
+      <div className="flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden print:overflow-visible">
+        <div className="print:hidden shrink-0">
           <AdminTopbar session={session} attentionItems={attentionItems} latestActivity={latestActivity} />
         </div>
-        <main className="min-h-0 min-w-0 flex-1 overflow-x-hidden overflow-y-visible p-6 lg:p-10 print:overflow-visible print:p-0">
+        <main className="min-h-0 min-w-0 flex-1 overflow-y-auto overflow-x-hidden p-6 lg:p-10 print:overflow-visible print:p-0">
           {children}
         </main>
       </div>
