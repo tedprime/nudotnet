@@ -1,31 +1,38 @@
-import Link from "next/link";
-import ImagesCarousel from "./imagesCarousel";
+import Link from 'next/link';
+import ImagesCarousel from './imagesCarousel';
+import { getSectionIntro, getAboutGalleryImages } from '@/lib/data/sections';
+import { SectionKey } from '@/generated/prisma/enums';
 
-const About = () => {
+const About = async () => {
+  const [section, images] = await Promise.all([
+    getSectionIntro(SectionKey.HOME_ABOUT),
+    getAboutGalleryImages(),
+  ]);
+
+  const secondaryParagraphs = section?.secondaryBody?.split('\n\n').filter(Boolean) ?? [];
+
   return (
     <div className="my-12">
-      <h2 className="text-[#ef6e11] text-center font-bold">Who We Are</h2>
-      <p className="w-[80%] text-center mx-auto mt-2">
-        TedPrime is a technology company. We design, build, and operate software
-        systems, SaaS platforms, and IT infrastructure for government agencies,
-        institutions, and enterprises across Africa.
-      </p>
-      <ImagesCarousel />
-      <p className="w-[80%] text-center mx-auto mt-3">
-        From national certification platforms to enterprise operating systems,
-        our work spans some of the most demanding, highest-stakes environments —
-        where reliability isn&apos;t optional.
-      </p>
-      <p className="w-[80%] text-center mx-auto mt-3">
-        Alongside our core technology practice, we run training and
-        capacity-development programs that help institutions build the digital
-        skills their systems depend on.
-      </p>
+      <h2 className="text-center font-bold text-[#ef6e11]">
+        {section?.eyebrow ?? 'Who We Are'}
+      </h2>
+      {section?.body && (
+        <p className="mx-auto mt-2 w-[80%] text-center">{section.body}</p>
+      )}
+      <ImagesCarousel
+        images={images.map((image) => ({
+          id: image.id,
+          imageUrl: image.imageUrl,
+          alt: image.alt,
+        }))}
+      />
+      {secondaryParagraphs.map((paragraph, index) => (
+        <p key={index} className="mx-auto mt-3 w-[80%] text-center">
+          {paragraph}
+        </p>
+      ))}
       <div className="mt-6 flex justify-center">
-        <Link
-          href="/about"
-          className="text-sm font-medium text-[#ef6e11] hover:underline"
-        >
+        <Link href="/about" className="text-sm font-medium text-[#ef6e11] hover:underline">
           Learn more about us
         </Link>
       </div>

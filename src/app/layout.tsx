@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Header from "@/components/shared/header";
-import Footer from "@/components/shared/footer";
 
 export const metadata: Metadata = {
   title: "TedPrime — Software, SaaS & IT Infrastructure for Government & Enterprise",
@@ -16,13 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={``}
-      >
-        <Header />
-        {children}
-        <Footer />
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

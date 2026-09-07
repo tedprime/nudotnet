@@ -1,7 +1,9 @@
-import { caseStudies } from '@/data/case-studies';
+import { getAllProjects } from '@/lib/data/projects';
 import { CaseStudyCard } from './case-study-card';
 
-export const CaseStudyGrid = () => {
+export const CaseStudyGrid = async () => {
+  const caseStudies = await getAllProjects();
+
   return (
     <div className="py-16 lg:py-24">
       <div className="container">

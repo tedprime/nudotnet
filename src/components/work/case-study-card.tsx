@@ -4,9 +4,9 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ChevronDown, ArrowUpRight } from 'lucide-react';
-import type { CaseStudy } from '@/data/case-studies';
+import type { Project } from '@/generated/prisma/client';
 
-export const CaseStudyCard = ({ caseStudy }: { caseStudy: CaseStudy }) => {
+export const CaseStudyCard = ({ caseStudy }: { caseStudy: Project }) => {
   const [expanded, setExpanded] = useState(false);
 
   const initials = caseStudy.name
@@ -17,10 +17,10 @@ export const CaseStudyCard = ({ caseStudy }: { caseStudy: CaseStudy }) => {
 
   return (
     <div className="flex flex-col overflow-hidden rounded-2xl border border-black/10 bg-white shadow-sm">
-      {caseStudy.image ? (
+      {caseStudy.imageUrl ? (
         <div className="relative h-48 w-full">
           <Image
-            src={caseStudy.image}
+            src={caseStudy.imageUrl}
             alt={caseStudy.name}
             width={800}
             height={450}

@@ -1,12 +1,11 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
-import { caseStudies } from '@/data/case-studies';
+import { getFeaturedProjects } from '@/lib/data/projects';
 
-const featuredSlugs = ['certigo', 'trcn', 'slan', 'bidooze'];
-const featured = caseStudies.filter((c) => featuredSlugs.includes(c.slug));
+const FeaturedWork = async () => {
+  const featured = await getFeaturedProjects();
 
-const FeaturedWork = () => {
   return (
     <div className="py-16 lg:py-24">
       <div className="container">
@@ -40,10 +39,10 @@ const FeaturedWork = () => {
                 href="/projects"
                 className="group flex flex-col overflow-hidden rounded-2xl border border-black/10 bg-white shadow-sm transition-shadow hover:shadow-md"
               >
-                {project.image ? (
+                {project.imageUrl ? (
                   <div className="relative h-36 w-full">
                     <Image
-                      src={project.image}
+                      src={project.imageUrl}
                       alt={project.name}
                       width={600}
                       height={400}

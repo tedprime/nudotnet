@@ -1,0 +1,274 @@
+// Prisma schema for the TedPrime admin panel + staff verification portal.
+// Docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+// Prisma 7 no longer takes connection URLs here: `prisma.config.ts` supplies
+// the URL for Migrate, and the app supplies a driver adapter at runtime
+// (see src/lib/prisma.ts).
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  SUPER_ADMIN
+  EDITOR
+}
+
+enum StaffStatus {
+  ACTIVE
+  FORMER
+  SUSPENDED
+}
+
+enum EmploymentType {
+  FULL_TIME
+  PART_TIME
+  CONTRACT
+}
+
+model AdminUser {
+  id           String   @id @default(cuid())
+  name         String
+  email        String   @unique
+  passwordHash String
+  role         Role     @default(EDITOR)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model StaffMember {
+  id             String         @id @default(cuid())
+  slug           String         @unique
+  staffId        String         @unique
+  fullName       String
+  title          String
+  department     String
+  location       String
+  employmentType EmploymentType @default(FULL_TIME)
+  status         StaffStatus    @default(ACTIVE)
+  startDate      DateTime
+  bio            String?        @db.Text
+  photoUrl       String?
+  email          String?
+  phone          String?
+  featured       Boolean        @default(false)
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+}
+
+model Project {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  name        String
+  category    String
+  badge       String
+  oneLiner    String
+  problem     String   @db.Text
+  whatWeBuilt String[]
+  stack       String[]
+  outcome     String   @db.Text
+  href        String?
+  imageUrl    String?
+  featured    Boolean  @default(false)
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Program {
+  id       String                 @id @default(cuid())
+  slug     String                 @unique
+  name     String
+  order    Int                    @default(0)
+  writeups ProgramWriteup[]
+  gallery  TrainingGalleryImage[]
+  sessions TrainingSession[]
+}
+
+enum CapabilitySection {
+  HOME
+  SOLUTIONS
+}
+
+enum HeroPage {
+  HOME
+  SOLUTIONS
+  ABOUT
+  PROJECTS
+  CONTACT
+  EDUBOX
+  NEWS_BAC
+}
+
+// day-by-day recap for a specific Program (was AGILE-only; now generic)
+model TrainingSession {
+  id          String   @id @default(cuid())
+  programId   String
+  program     Program  @relation(fields: [programId], references: [id], onDelete: Cascade)
+  order       Int      @default(0)
+  name        String
+  description String   @db.Text
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// photo gallery for a specific Program (was AGILE-only baseline/flag-off; now generic)
+model TrainingGalleryImage {
+  id        String   @id @default(cuid())
+  programId String
+  program   Program  @relation(fields: [programId], references: [id], onDelete: Cascade)
+  group     String?
+  order     Int      @default(0)
+  imageUrl  String
+  createdAt DateTime @default(now())
+}
+
+// write-ups for a specific Program (AGILE intro, 3MTT, Digital Centers, ...)
+model ProgramWriteup {
+  id        String         @id @default(cuid())
+  programId String
+  program   Program        @relation(fields: [programId], references: [id], onDelete: Cascade)
+  order     Int            @default(0)
+  title     String
+  body      String         @db.Text
+  images    WriteupImage[]
+  createdAt DateTime       @default(now())
+  updatedAt DateTime       @updatedAt
+}
+
+// a write-up's own photo(s) — one renders as a static image, more than one
+// renders as a carousel (e.g. AGILE's "Baseline" photos beside its intro)
+model WriteupImage {
+  id        String         @id @default(cuid())
+  writeupId String
+  writeup   ProgramWriteup @relation(fields: [writeupId], references: [id], onDelete: Cascade)
+  order     Int            @default(0)
+  imageUrl  String
+  createdAt DateTime       @default(now())
+}
+
+// home "What We Do" + Solutions "What We Build" capabilities grid
+model Capability {
+  id          String            @id @default(cuid())
+  section     CapabilitySection
+  icon        String
+  title       String
+  description String            @db.Text
+  order       Int               @default(0)
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+}
+
+// Solutions "Who We Build For"
+model Industry {
+  id          String @id @default(cuid())
+  order       Int    @default(0)
+  title       String
+  description String @db.Text
+}
+
+// unifies the home 5-slide hero + the 6 one-off page heroes
+model PageHero {
+  id          String   @id @default(cuid())
+  page        HeroPage
+  order       Int      @default(0)
+  eyebrow     String
+  body        String   @db.Text
+  image       String
+  bgColor     String?
+  ctaLabel    String?
+  ctaHref     String?
+  ctaExternal Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@unique([page, order])
+}
+
+// unifies the home events slider + list, and (via slug+body) full articles
+// hosted on the site itself — an item either links out (link + external) or
+// has its own page at /News/[slug] (slug + body).
+model Event {
+  id          String   @id @default(cuid())
+  order       Int      @default(0)
+  date        String
+  headline    String
+  description String   @db.Text
+  imageUrl    String?
+  link        String?
+  external    Boolean  @default(true)
+  slug        String?  @unique
+  body        String?  @db.Text
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+enum SectionKey {
+  HOME_ABOUT
+  HOME_TRAINING
+}
+
+// home marquee of partner/collaborator logos
+model PartnerLogo {
+  id        String   @id @default(cuid())
+  order     Int      @default(0)
+  imageUrl  String
+  alt       String
+  createdAt DateTime @default(now())
+}
+
+// short text blocks that intro a home-page section (Who We Are, Training &
+// Capacity Development) — `heading`/`secondaryBody` are used where a section
+// has a sub-heading or a second paragraph block after its carousel.
+model SectionIntro {
+  id            String     @id @default(cuid())
+  section       SectionKey @unique
+  eyebrow       String
+  heading       String?
+  body          String     @db.Text
+  secondaryBody String?    @db.Text
+  updatedAt     DateTime   @updatedAt
+}
+
+// the "Who We Are" image gallery carousel (shown on both / and /about)
+model AboutGalleryImage {
+  id        String   @id @default(cuid())
+  order     Int      @default(0)
+  imageUrl  String
+  alt       String
+  createdAt DateTime @default(now())
+}
+
+// the "Training & Capacity Development" home-page teaser carousel
+model TrainingHighlight {
+  id          String   @id @default(cuid())
+  order       Int      @default(0)
+  imageUrl    String
+  title       String
+  description String   @db.Text
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+enum ActivityAction {
+  CREATED
+  UPDATED
+  DELETED
+}
+
+// a record of every admin create/update/delete, backing the dashboard's
+// Recent Activity / Content Pulse and the topbar's notifications
+model ActivityLog {
+  id          String         @id @default(cuid())
+  actorId     String?
+  actorName   String
+  action      ActivityAction
+  entityType  String
+  entityLabel String
+  href        String?
+  createdAt   DateTime       @default(now())
+}
