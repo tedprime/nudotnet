@@ -1,30 +1,17 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { PageHeroSection } from '@/components/shared/page-hero';
+import { getPageHero } from '@/lib/data/hero';
+import { HeroPage } from '@/generated/prisma/enums';
 
-export const EduBox = () => {
+export const EduBox = async () => {
+  const hero = await getPageHero(HeroPage.EDUBOX);
+
   return (
     <>
-      {/* hero */}
-      <div className="relative isolate h-screen max-h-[1200px] overflow-hidden bg-stone-50">
-        <div className="h-full w-full">
-          <div className="relative h-full w-full">
-            <Image
-              src={'/images/edubox.jpg'}
-              alt="edubox"
-              width={1000}
-              height={1000}
-              className="h-full w-full object-cover object-top"
-            />
-            <div className="absolute inset-0 top-0 h-full w-full bg-gradient-to-b from-black/80 via-transparent to-black/80"></div>
-            <div className="absolute inset-0 mx-auto mb-0 mt-auto flex h-fit w-full max-w-[800px] flex-col items-center justify-center rounded-none bg-black/20 py-16 backdrop-blur-md lg:mb-20 lg:rounded-2xl">
-              <p className="text-white/50">TedPrime Hub</p>
-              <p className="mt-2 text-balance text-center text-xl text-white md:text-2xl">
-                EduBox Device Technology
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+      {hero && (
+        <PageHeroSection image={hero.image} eyebrow={hero.eyebrow} body={hero.body} alt="edubox" />
+      )}
       {/* content */}
       <div className="container py-12">
         <div className="mx-auto w-full md:w-[80%]">

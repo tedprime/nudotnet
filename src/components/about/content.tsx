@@ -1,8 +1,11 @@
 import Image from 'next/image';
 import ImagesCarousel from '../home/imagesCarousel';
 import { CoreValues } from '../home/core-values';
+import { getAboutGalleryImages } from '@/lib/data/sections';
 
-export const Content = () => {
+export const Content = async () => {
+  const images = await getAboutGalleryImages();
+
   return (
     <>
       <div className="py-14">
@@ -89,7 +92,13 @@ export const Content = () => {
         across borders.
       </h3>
       <div className="my-12 overflow-x-hidden">
-        <ImagesCarousel />
+        <ImagesCarousel
+          images={images.map((image) => ({
+            id: image.id,
+            imageUrl: image.imageUrl,
+            alt: image.alt,
+          }))}
+        />
       </div>
       <p className="mx-auto mb-12 w-[95%] md:w-[80%] text-center text-lg">
         TedPrime Limited envisions a harmonious synergy where the
