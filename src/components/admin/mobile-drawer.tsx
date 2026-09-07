@@ -7,20 +7,28 @@ import type { SessionPayload } from '@/lib/session';
 
 export default function MobileDrawer({ session }: { session: SessionPayload }) {
   const { open, setOpen } = useMobileNav();
-  if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex">
+    <div
+      className={`fixed inset-0 z-50 flex transition-opacity duration-200 ${
+        open ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
+      }`}
+      aria-hidden={!open}
+    >
       <div
-        className="fixed inset-0 bg-black/40"
+        className={`fixed inset-0 bg-black/40 transition-opacity duration-200 ${
+          open ? 'opacity-100' : 'opacity-0'
+        }`}
         onClick={() => setOpen(false)}
         aria-hidden
       />
-      <aside className="relative h-full w-64 shrink-0 border-r border-black/10 bg-white">
-        <div className="overflow-y-auto w-full">
-          <AdminSidebar session={session} />
-        </div>
-      </aside>
+      <div
+        className={`relative z-10 h-full w-64 shrink-0 overflow-hidden bg-white shadow-xl transition-transform duration-200 ${
+          open ? 'translate-x-0' : '-translate-x-full'
+        }`}
+      >
+        <AdminSidebar session={session} mobile />
+      </div>
     </div>
   );
 }

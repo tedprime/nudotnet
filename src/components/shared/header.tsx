@@ -96,12 +96,26 @@ const Header = () => {
           >
             Contact
           </Link>
-          <nav className="md:hidden">
-            <div onClick={() => setShowMobileNav(!showMobileNav)}>
+          <nav className="relative md:hidden">
+            <button
+              type="button"
+              onClick={() => setShowMobileNav(!showMobileNav)}
+              className="flex items-center justify-center"
+              aria-label="Toggle menu"
+            >
               <GiHamburgerMenu color="white" size={28} />
-            </div>
+            </button>
+
+            {showMobileNav && (
+              <div
+                className="fixed inset-0 z-[998] bg-black/40"
+                onClick={() => setShowMobileNav(false)}
+                aria-hidden="true"
+              />
+            )}
+
             <div
-              className={`absolute ${showMobileNav ? 'right-0' : '-right-[100%]'} top-0 z-[999] flex h-screen w-full flex-col bg-gray-800 transition-all duration-300 ease-in`}
+              className={`fixed right-0 top-0 z-[999] flex h-screen w-[80%] max-w-sm flex-col bg-gray-800 transition-transform duration-300 ease-in ${showMobileNav ? 'translate-x-0' : 'translate-x-full'}`}
             >
               <div
                 onClick={() => setShowMobileNav(false)}

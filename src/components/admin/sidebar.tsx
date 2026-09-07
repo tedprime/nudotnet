@@ -55,14 +55,22 @@ const NAV_GROUPS = [
   },
 ] as const;
 
-export const AdminSidebar = ({ session }: { session: SessionPayload }) => {
+export const AdminSidebar = ({
+  session,
+  mobile = false,
+}: {
+  session: SessionPayload;
+  mobile?: boolean;
+}) => {
   const pathname = usePathname();
 
   const isActive = (href: string, exact: boolean) =>
     exact ? pathname === href : pathname.startsWith(href);
 
   return (
-    <aside className="flex h-screen w-64 shrink-0 flex-col border-r border-black/10 bg-white">
+    <aside
+      className={`flex ${mobile ? 'h-full' : 'h-screen'} w-64 shrink-0 flex-col border-r border-black/10 bg-white`}
+    >
       <div className="flex h-20 shrink-0 items-center border-b border-black/10 px-6">
         <span className="text-lg font-bold text-black">
           TedPrime <span className="text-[#ef6e11]">Admin</span>
