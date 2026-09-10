@@ -1,12 +1,18 @@
 "use client";
 
-import React from 'react';
+import React, { useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import { useMobileNav } from '@/components/admin/mobile-nav-context';
 import { AdminSidebar } from '@/components/admin/sidebar';
 import type { SessionPayload } from '@/lib/session';
 
 export default function MobileDrawer({ session }: { session: SessionPayload }) {
-  const { open, setOpen } = useMobileNav();
+  const pathname = usePathname();
+  const { open, close } = useMobileNav();
+
+  useEffect(() => {
+    close();
+  }, [pathname, close]);
 
   return (
     <div
@@ -19,7 +25,7 @@ export default function MobileDrawer({ session }: { session: SessionPayload }) {
         className={`fixed inset-0 bg-black/40 transition-opacity duration-200 ${
           open ? 'opacity-100' : 'opacity-0'
         }`}
-        onClick={() => setOpen(false)}
+        onClick={close}
         aria-hidden
       />
       <div
@@ -27,7 +33,7 @@ export default function MobileDrawer({ session }: { session: SessionPayload }) {
           open ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
-        <AdminSidebar session={session} mobile />
+        <AdminSidebar session={session} mobile onNavigate={close} />
       </div>
     </div>
   );

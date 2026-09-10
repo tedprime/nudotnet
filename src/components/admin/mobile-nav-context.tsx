@@ -6,6 +6,7 @@ type MobileNavContextValue = {
   open: boolean;
   setOpen: (open: boolean) => void;
   toggle: () => void;
+  close: () => void;
 };
 
 const MobileNavContext = createContext<MobileNavContextValue | null>(null);
@@ -14,7 +15,14 @@ export function MobileNavProvider({ children }: { children: ReactNode }) {
   const [open, setOpen] = useState(false);
 
   return (
-    <MobileNavContext.Provider value={{ open, setOpen, toggle: () => setOpen((o) => !o) }}>
+    <MobileNavContext.Provider
+      value={{
+        open,
+        setOpen,
+        toggle: () => setOpen((o) => !o),
+        close: () => setOpen(false),
+      }}
+    >
       {children}
     </MobileNavContext.Provider>
   );

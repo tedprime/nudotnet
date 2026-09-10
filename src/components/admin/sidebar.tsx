@@ -58,9 +58,11 @@ const NAV_GROUPS = [
 export const AdminSidebar = ({
   session,
   mobile = false,
+  onNavigate,
 }: {
   session: SessionPayload;
   mobile?: boolean;
+  onNavigate?: () => void;
 }) => {
   const pathname = usePathname();
 
@@ -89,6 +91,7 @@ export const AdminSidebar = ({
               <Link
                 key={href}
                 href={href}
+                onClick={() => onNavigate?.()}
                 className={`flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
                   isActive(href, exact)
                     ? 'bg-[#ef6e11]/10 text-[#ef6e11]'
@@ -109,6 +112,7 @@ export const AdminSidebar = ({
             </p>
             <Link
               href="/admin/users"
+              onClick={() => onNavigate?.()}
               className={`flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
                 isActive('/admin/users', false)
                   ? 'bg-[#ef6e11]/10 text-[#ef6e11]'
