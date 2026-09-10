@@ -34,6 +34,10 @@ const Header = () => {
     };
   }, [showMobileNav]);
 
+  useEffect(() => {
+    setShowMobileNav(false);
+  }, [pathname]);
+
   return (
     <nav
       className={`fixed inset-x-0 top-0 z-[999] grid h-24 px-4 transition-all duration-300 ease-in md:px-7 ${scrollY > 50 ? 'bg-gray-700/70 backdrop-blur-md' : 'bg-transparent'}`}
@@ -127,6 +131,7 @@ const Header = () => {
                 <li>
                   <Link
                     href={'/'}
+                    onClick={() => setShowMobileNav(false)}
                     className={`group inline-flex h-10 w-max items-center justify-center !rounded-full px-4 py-2 text-sm font-bold transition-colors ${pathname === '/' ? 'bg-white text-gray-800' : 'bg-transparent text-white'}`}
                   >
                     Home
@@ -135,6 +140,7 @@ const Header = () => {
                 <li>
                   <Link
                     href={'/solutions'}
+                    onClick={() => setShowMobileNav(false)}
                     className={`group inline-flex h-10 w-max items-center justify-center !rounded-full px-4 py-2 text-sm font-bold transition-colors ${pathname === '/solutions' ? 'bg-white text-gray-800' : 'bg-transparent text-white'}`}
                   >
                     Solutions
@@ -143,6 +149,7 @@ const Header = () => {
                 <li>
                   <Link
                     href={'/about'}
+                    onClick={() => setShowMobileNav(false)}
                     className={`group inline-flex h-10 w-max items-center justify-center !rounded-full px-4 py-2 text-sm font-bold transition-colors ${pathname === '/about' ? 'bg-white text-gray-800' : 'bg-transparent text-white'}`}
                   >
                     About Us
@@ -151,6 +158,7 @@ const Header = () => {
                 <li>
                   <Link
                     href={'/projects'}
+                    onClick={() => setShowMobileNav(false)}
                     className={`group inline-flex h-10 w-max items-center justify-center !rounded-full px-4 py-2 text-sm font-bold transition-colors ${pathname === '/projects' ? 'bg-white text-gray-800' : 'bg-transparent text-white'}`}
                   >
                     Projects
@@ -159,6 +167,7 @@ const Header = () => {
                 <li>
                   <Link
                     href={'/contact'}
+                    onClick={() => setShowMobileNav(false)}
                     className="group inline-flex h-10 w-max items-center justify-center !rounded-full bg-[#ef6e11] px-6 py-2 text-sm font-bold text-white transition-colors"
                   >
                     Contact
